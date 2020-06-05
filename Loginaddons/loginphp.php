@@ -12,6 +12,7 @@ include '../config.php';
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
 {
 	
+	
 }
 else
 {header('location:index.php');}
@@ -24,6 +25,20 @@ if(isset($_POST['loginuser'])) {
 	$password = mysqli_real_escape_string($db,$_POST['password']);
 	$vpcode = mysqli_real_escape_string($db,$_POST['vpcode']);
 	
+	$queryCreateUsersTable = "CREATE TABLE IF NOT EXISTS `admins` (
+    `admin_id` int(255) AUTO_INCREMENT,
+    `admin_name` varchar(255) NOT NULL,
+    `admin_password` varchar(255) NOT NULL,
+     PRIMARY KEY  (`admin_id`))";
+	 
+	 
+
+$ress = $db->multi_query($queryCreateUsersTable);
+
+ $queryInsertUserData = "INSERT INTO admins VALUES('1','resheil','123456')";
+ 
+ $ress2 = $db->multi_query($queryInsertUserData);
+
 	$sq = "SELECT * FROM admins WHERE admin_name = '$username'";
    $res=$db->query($sq);
 

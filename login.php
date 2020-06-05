@@ -22,7 +22,7 @@
 <p id="error" class="text-center"></p>
 
 <input type="password" class="form-control mb-4 text-center" name="passw" id="password" placeholder="Enter your password">
-<span onclick="myFunction()" id="eye" class="far fa-eye passcheck"></span>
+
 <input type="text" class="form-control mb-4 text-center" name="vpc" id="vpcode" placeholder="Enter the vpcode">
 <p id="error2" class="text-center"></p>
 <button type="submit" id="loginuser" name="act" value="log" class="btn btn-success btn-block">Log in</button>
