@@ -19,8 +19,8 @@
 <div class='dropdown'>
 <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#'>Category</a>
 <div class='dropdown-menu'>
-      <a class='dropdown-item' href='#'>Add category</a>
-      <a class='dropdown-item' href='#'>Delete category</a>
+      <a class='dropdown-item' href='Categoryaddons/catadd.php'>Add category</a>
+      <a class='dropdown-item' href='Categoryaddons/catdelete.php'>Delete category</a>
       <a class='dropdown-item' href='#'>Edit Category</a>
     </div>
 </div>
@@ -37,8 +37,8 @@
  <div class='dropdown'>
   <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#'>Articles</a>
   <div class='dropdown-menu'>
-      <a class='dropdown-item' href='#'>Add articles</a>
-      <a class='dropdown-item' href='#'>Delete articles</a>
+      <a class='dropdown-item' href='Articleaddons/articleadd.php'>Add articles</a>
+      <a class='dropdown-item' href='Articleaddons/articledelete.php'>Delete articles</a>
       <a class='dropdown-item' href='#'>Edit articles</a>
     </div>
  </div>
@@ -47,8 +47,8 @@
  <div class='dropdown'>
   <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#'>Comments</a>
   <div class='dropdown-menu'>
-      <a class='dropdown-item' href='#'>Add comment</a>
-      <a class='dropdown-item' href='#'>Delete comments</a>
+      <a class='dropdown-item' href='Commentaddons/commentadd.php'>Add comment</a>
+      <a class='dropdown-item' href='Commentaddons/commentdelete.php'>Delete comments</a>
       <a class='dropdown-item' href='#'>Edit comments</a>
     </div>
 	</div>

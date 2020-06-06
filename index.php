@@ -21,6 +21,8 @@ include 'config.php';
 
 <style>
 h1{text-align:center;}
+	a{color:black;}
+	a:hover{text-decoration:none;}
 </style>
 </head>
 <body>
@@ -28,30 +30,51 @@ h1{text-align:center;}
 <?php include 'navbar2.php'; ?>
 <div class="container">
   <div class='row'>
-  <div class='col-md-6'>
-  <div class="card" style="width:400px">
-    <img class="card-img-top" src="cricket.jpg" alt="Card image" style="width:100%">
-    <div class="card-body">
-      <h4 class="card-title">Cricket</h4>
-      <p class="card-text">News related to cricket</p>
-      <a href="#" class="btn btn-primary">See Profile</a>
-    </div>
+  
+<?php 
+
+$sql = "SELECT * FROM category";
+$result = $db->query($sql);
+
+while($row = $result->fetch_assoc())
+{
+
+echo"
+  <div class='col-md-6 mb-4'>
+  <a href='articles.php?id=$row[cat_id]'>
+  <div class='card' style='width:400px'>
+    <img class='card-img-top' src='Profilepics/$row[cat_img]' alt='Card image' style='width:100%'>
+    <div class='card-body'>
+      <h4 class='card-title'>$row[cat_name]</h4>
+      <p class='card-text'>$row[cat_desc]</p>
+	  ";
+	  if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
+	  {
+        echo "";
+      }
+	  else
+	  {
+		  echo"<a href='#' class='btn btn-primary'>Delete</a>";
+	  }
+	echo"
+	</div>
   </div>
+  </a>
   </div>
+  ";
+  
+}
+ 
+?>  
   <br>
   
- <div class='col-md-6'>
-  <div class="card" style="width:400px">
-  <img class="card-img-bottom" src="football.jpg" alt="Card image" style="width:100%">
-    <div class="card-body">
-      <h4 class="card-title">Football</h4>
-      <p class="card-text">News related to football</p>
-      <a href="#" class="btn btn-primary">See Profile</a>
-    </div>
-    
-  </div>
-  </div>
+ 
   </div>
 </div>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();   
+});
+</script>
 </body>
 </html>
