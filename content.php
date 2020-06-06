@@ -11,8 +11,6 @@ include 'config.php';
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="stylesheet.css">
-  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -28,21 +26,26 @@ h1{text-align:center;}
 <body>
 <h1>News</h1>
 <?php include 'navbar2.php'; ?>
-<div class="container">
-  
+
+<div class='container-fluid'> 
   
 <?php 
 
-$sql = "SELECT * FROM articles WHERE article_id = $_GET[id]";
+$sql = "SELECT * FROM articles INNER JOIN category ON article_category = cat_id WHERE article_id = $_GET[id]";
 $result = $db->query($sql);
 
+
+
+
+
 if($result->num_rows == 0)
-{
+{  
+    echo"<h6><a href='index.php' style='text-decoration:underline'>Home</a> > <a href='articles.php?id=$row[article_category]' style='text-decoration:underline'>Articles</a> </h6>";
 	echo "<h2>No articles</h2>";
 }
 while($row = $result->fetch_assoc())
 {
-
+echo"<h6><a href='index.php' style='text-decoration:underline'>Home</a> > <a href='articles.php?id=$row[article_category]' style='text-decoration:underline'>Articles</a> </h6>";
 echo"
   <h2 class='text-center'>$row[article_name]</h2>
    $row[article_content]
@@ -63,6 +66,7 @@ echo"
 	  while($row = $result->fetch_assoc())
 	  {
 		  echo "<h6>Posted on: $row[comment_create]</h6>";
+		   
 		       if(empty($row['comment_by']))
 			   {
 				   echo "<h6>By: Anonymous user</h6>";
@@ -71,7 +75,17 @@ echo"
 			   {
 		        echo "<h6>By: $row[comment_by]</h6>";
 		       }
-			   echo "<p>$row[comment_summary]</p>";
+			   if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
+           {
+	        echo"";
+           }
+            else
+           {
+	        echo"<a href='Commentaddons/editcomment.php?id=$row[comment_id]' class='float-right'>Edit</a>
+			     <br><br>
+			     <a href='Commentaddons/deletecomment.php?id=$row[comment_id]' class='float-right'>Delete</a>";
+           }
+			   echo "<p>$row[comment_summary]</p><hr>";
 		  
 	  }
 	 
@@ -92,8 +106,8 @@ echo " <form name='com' method='post' id='comments'>
   <br>
   
  
-  
-</div>
+  </div>
+
 <script>
 $(document).ready(function(){
   $('#comments').submit(function(event){

@@ -8,21 +8,17 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
 
 include '../config.php';
 
-$sql = "SELECT * from articles";
+$sql = "SELECT * FROM comments WHERE comment_id = $_GET[id]";
 $result = $db->query($sql);
+$row = $result->fetch_assoc();
 
-if($result->num_rows == 0)
-{
-	echo "<script type='text/javascript'>
-			   setTimeout(function(){window.location.assign('../index.php');});	</script>";
-}
 ?>
 
 <html>
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+ 
   <script src="ckeditor.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -39,32 +35,9 @@ if($result->num_rows == 0)
 <div class='container' id='category_back'>
 <form name='comm' method='post' id='comments'>
 
-<h3 id='user' class='text-center'>Create a Comment</h3>
+<h3 id='user' class='text-center'>Edit a Comment</h3>
 
-
-<div class='form-group'>
-Select an article:<select class='form-control' id='artsel' name='artselect'>
-                   
-<?php 
-
-if(empty($result))
-{
-	echo "<script type='text/javascript'>
-		        alert('There are no categories');
-			   setTimeout(function(){window.location.assign('../index.php');});	</script>";
-			   
-	echo "<option value='No'>No articles</option>";
-}
-
-while($row = mysqli_fetch_assoc($result))
-{
-echo "
-      <option value=$row[article_id]>$row[article_name]</option>";
-}
-?>
-</select>
-</div>
-<textarea class='form-control' name='comment_desc' rows='4' cols='155' id='cdesc' placeholder='Summary'></textarea>
+<textarea class='form-control' name='comment_desc' rows='4' cols='155' id='cdesc' placeholder='Summary'><?php echo $row['comment_summary']; ?></textarea>
 <br>
 <input type="text" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
 
@@ -79,15 +52,14 @@ echo "
 $(document).ready(function(){
 	$('#comments').submit(function(event){
 		event.preventDefault();
-		var artsel = $('#artsel').val();
+		
 		var cdesc = $('#cdesc').val();
 		var vpcode = $('#vpcode').val();
 		var cbtn = $('#cbtn').val();
 		$.ajax({
-			url:'commentaddphp.php',
+			url:'editcommentphp.php?id=<?php echo $_GET['id']; ?>',
 			method:'POST',
 			data:{
-				  artsel:artsel,
 				  cdesc:cdesc,
 				  vpcode:vpcode,
 				  cbtn:cbtn},

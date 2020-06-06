@@ -8,11 +8,17 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
 
 include '../config.php';
 
+$sql = "SELECT * FROM category WHERE cat_id = $_GET[id]";
+$result = $db->query($sql);
+$row = $result->fetch_assoc();
+
 ?>
 <html>
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -22,13 +28,12 @@ include '../config.php';
 <body>
 <?php include '../navbar3.php'; ?>
 <div class='container' id='category_back'>
-
 <form name='cat' method='post' id='category' enctype="multipart/form-data">
-<h3 id='user' class='text-center'>Create a Category</h3>
+<h3 id='user' class='text-center'>Edit a Category</h3>
 
-<input type='text' id = 'cname' name = 'cat_name' class='form-control mb-4' placeholder = 'Enter the name of the category'>
+<input type='text' id = 'cname' name = 'cat_name' class='form-control mb-4' placeholder = 'Enter the name of the category' value='<?php echo $row['cat_name']; ?>'>
 
-<textarea class='form-control' placeholder = 'Add the summary' name='cat_desc' rows='20' cols='155' id='cdesc'></textarea>
+<textarea class='form-control' placeholder = 'Add the summary' name='cat_desc' rows='20' cols='155' id='cdesc'><?php echo $row['cat_desc']; ?></textarea>
 <br>
 <input type="text" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
 <input type='file' name='file' id='file'/>
@@ -59,7 +64,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			
-			url:'cataddphp.php',
+			url:'editcategoryphp.php?id=<?php echo $_GET['id']; ?>',
 			method:'POST',
 			data:form_data,
 			contentType:false,

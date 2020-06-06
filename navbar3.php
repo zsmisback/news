@@ -1,8 +1,7 @@
-
 <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
 <ul class='navbar-nav'>
  <li class='nav-item'>
-  <a class='nav-link' href='index.php'>Home</span></a>
+  <a class='nav-link' href='../index.php'>Home</span></a>
  </li>
 
  </ul>
@@ -24,8 +23,8 @@
 <div class='dropdown'>
 <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#'>Category</a>
 <div class='dropdown-menu'>
-      <a class='dropdown-item' href='Categoryaddons/catadd.php'>Add category</a>
-      <a class='dropdown-item' href='Categoryaddons/categorylist.php'>List categories</a>
+      <a class='dropdown-item' href='../Categoryaddons/catadd.php'>Add category</a>
+      <a class='dropdown-item' href='../Categoryaddons/categorylist.php'>List categories</a>
     </div>
 </div>
 </li>
@@ -41,8 +40,8 @@
  <div class='dropdown'>
   <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#'>Articles</a>
   <div class='dropdown-menu'>
-      <a class='dropdown-item' href='Articleaddons/articleadd.php'>Add articles</a>
-      <a class='dropdown-item' href='Articleaddons/articlelist.php'>List articles</a>
+      <a class='dropdown-item' href='../Articleaddons/articleadd.php'>Add articles</a>
+      <a class='dropdown-item' href='../Articleaddons/articlelist.php'>List articles</a>
       
     </div>
  </div>
@@ -51,8 +50,8 @@
  <div class='dropdown'>
   <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#'>Comments</a>
   <div class='dropdown-menu'>
-      <a class='dropdown-item' href='Commentaddons/commentadd.php'>Add comment</a>
-      <a class='dropdown-item' href='Commentaddons/commentlist.php'>List comments</a>
+      <a class='dropdown-item' href='../Commentaddons/commentadd.php'>Add comment</a>
+      <a class='dropdown-item' href='../Commentaddons/commentlist.php'>List comments</a>
     </div>
 	</div>
  </li>
