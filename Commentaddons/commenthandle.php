@@ -19,6 +19,11 @@ session_start();
 		{
 			echo "<span class='err'>Please enter your comment </span>";
 		}
+		elseif(strlen($cdesc) > 150)
+        {
+			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			
+	    }
 		else
 		{  
 	

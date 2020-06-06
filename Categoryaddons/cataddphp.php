@@ -42,6 +42,11 @@ else
 	{
 		echo "<span class='err'>Please fill in the description field</span>";
 	}
+	elseif(strlen($cat_desc) > 150)
+    {
+			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			
+	}
 	elseif(mysqli_num_rows($result) > 0)
 	{
 		echo "<span class='err'>This category already exist</span>";

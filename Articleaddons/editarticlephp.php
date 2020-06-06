@@ -36,6 +36,11 @@ else
 		{
 			echo "<span class='err'>Please fill in the article summary </span>";
 		}
+		elseif(strlen($art_desc) > 150)
+		{
+			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			$cl = false;
+		}
 		elseif(empty($vpcode))
 	   {
 		echo "Plesae enter the vpcode";

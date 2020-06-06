@@ -28,6 +28,11 @@ else
 	{
 		echo "<span class='err'>Please fill in the description field</span>";
 	}
+	elseif(strlen($cat_desc) > 150)
+    {
+			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			
+	}
 	elseif(!isset($_FILES['file']['name']))
 	{
 		echo "<span class='err'>Please select an image</span>";

@@ -42,11 +42,7 @@ if($result->num_rows == 0)
 }
 while($row = $result->fetch_assoc())
 {
-
-echo"
-   <a href='content.php?id=$row[article_id]'><h2>$row[article_name]</h2></a>
-   ";
-   if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
+	 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
   {
 	echo"";
   }
@@ -54,6 +50,14 @@ echo"
   {
 	  echo"<a href='Articleaddons/deletearticle.php?id=$row[article_id]' class='float-right'>Delete</a>";
   }
+
+echo"
+   <a href='content.php?id=$row[article_id]'>
+   <img src='Profilepics/$row[article_image]' alt = 'image' style='width:400px'>
+   <h2>$row[article_name]</h2>
+   </a>
+   ";
+  
    
 echo"
    <h5>$row[article_summary]</h5>

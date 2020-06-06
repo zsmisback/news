@@ -31,12 +31,13 @@ if($result->num_rows == 0)
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="jquery.backstretch.min.js"></script>
   <style>
+  
   #mainart{display:none;}
   </style>
 </head>
 <body>
 <?php include '../navbar3.php'; ?>
-<div class='container' id='category_back'>
+<div class='container' id='category_back' enctype="multipart/form-data">
 <form name='art' method='post' id='article'>
 <div id='firstart'>
 <h3 id='user' class='text-center'>Create an Article</h3>
@@ -68,6 +69,7 @@ echo "
 
 <br>
 <input type="text" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
+<input type='file' name='file' id='file'/>
 </div>
 <div id='mainart'>
 <h3 id='user' class='text-center'>Articles Content</h3>
@@ -92,15 +94,22 @@ $(document).ready(function(){
 		var adesc2 = $('#adesc2').val();
 		var artsel = $('#artsel').val();
 		var abtn = $('#abtn').val();
+		var property = document.getElementById('file').files[0];
+	    var form_data = new FormData();
+		form_data.append("art_name",aname);
+		form_data.append("art_desc",adesc);
+		form_data.append("vpc",vpcode);
+		form_data.append("art_desc2",adesc2);
+		form_data.append("artselect",artsel);
+		form_data.append("newart",abtn);
+		form_data.append("file",property);
 		$.ajax({
 			url:'articleaddphp.php',
 			method:'POST',
-			data:{aname:aname,
-			      adesc:adesc,
-				  vpcode:vpcode,
-				  adesc2:adesc2,
-				  artsel:artsel,
-				  abtn:abtn},
+			data:form_data,
+			contentType:false,
+			cache:false,
+			processData:false,
 				  
 				  beforeSend:function(){
 			
@@ -129,14 +138,8 @@ $(document).ready(function(){
 			
 		})
 		
-		if(aname !== '' && adesc !== '' && artsel !== '' && vpcode !== '' && vpcode == 'letsgetrightintothenews')
-		{
-			$('#mainart').css('display','block');
-			$('#firstart').css('display','none');
-			$('#abtn').css('display','none');
-			$('#abtn').css('display','block');
-			
-		}
+		
+		
 		
 	});
 	
