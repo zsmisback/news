@@ -102,7 +102,7 @@ elseif ($_FILES["file"]["size"] > 5000000) {
 				
 		if(empty($art_desc2))
 		{
-			echo "<span class='err'>Hey</span>";
+			echo "<span class='err'>This is the articles main content.Please double click to submit.</span>";
 		}
         else
 		{
