@@ -48,7 +48,9 @@ while($row = $result->fetch_assoc())
   }
   else
   {
-	  echo"<a href='Articleaddons/deletearticle.php?id=$row[article_id]' class='float-right'>Delete</a>";
+	  echo"<a href='Articleaddons/editarticle.php?id=$row[article_id]' class='float-right'>Edit</a>
+	       <br><br>
+	       <a href='Articleaddons/deletearticle.php?id=$row[article_id]' class='float-right'>Delete</a>";
   }
 
 echo"
