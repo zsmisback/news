@@ -23,6 +23,7 @@ else
     `cat_name` varchar(255) NOT NULL,
     `cat_desc` varchar(255) NOT NULL,
 	`cat_img` varchar(255) NOT NULL,
+	`cat_unique_key` varchar(10) NOT NULL,
 	`cat_create` DATETIME NOT NULL,
      PRIMARY KEY  (`cat_id`))";
 	 
@@ -42,9 +43,9 @@ else
 	{
 		echo "<span class='err'>Please fill in the description field</span>";
 	}
-	elseif(strlen($cat_desc) > 150)
+	elseif(strlen($cat_desc) > 500)
     {
-			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			echo "<span class='err'>Please summarize in under 500 characters</span>";
 			
 	}
 	elseif(mysqli_num_rows($result) > 0)
@@ -64,8 +65,11 @@ else
 		echo "<span class='err'>The vpcode is incorrect </span>";
 	}
 	else{
-			$target_dir = "../Profilepics/";
-            
+		    $token = 'sadkjeawhijwajdilhasilfjaehioryweapirjpway9uprpjrpewahjrej23136513123q08192383431';
+			$token = str_shuffle($token);
+		    $token= substr($token,0,10);
+			$filecreate = mkdir("../Profilepics/Category/$token");
+			$target_dir = "../Profilepics/Category/$token/";
             $uploadOk = 1;
             $base = mysqli_real_escape_string($db,basename($_FILES['file']['name']));
 			$clean = clean($base);
@@ -91,10 +95,11 @@ elseif ($_FILES["file"]["size"] > 5000000) {
   {
 	            echo "<span class='err'></span>";
 	            move_uploaded_file($_FILES['file']['tmp_name'],$target_file);
-				$sql = "INSERT INTO category(cat_name,cat_desc,cat_img,cat_create) VALUES('$cat_name','$cat_desc','$clean',NOW())";
+				$sql = "INSERT INTO category(cat_name,cat_desc,cat_img,cat_unique_key,cat_create) VALUES('$cat_name','$cat_desc','$clean','$token',NOW())";
 				$results = $db->query($sql);
 				echo "<script type='text/javascript'>
 			   setTimeout(function(){window.location.assign('../index.php');});	</script>";
+				
   }
   
   

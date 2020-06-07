@@ -28,6 +28,9 @@ else
     `article_summary` varchar(255) NOT NULL,
 	`article_content` varchar(255) NOT NULL,
 	`article_category` int(255) NOT NULL,
+	`article_create` datetime NOT NULL,
+	`article_image` varchar(255) NOT NULL,
+	`article_unique_key` varchar(10) NOT NULL,
      PRIMARY KEY  (`article_id`))";
 	 
 	 
@@ -44,9 +47,9 @@ else
 			echo "<span class='err'>Please fill in the article summary </span>";
 			$cl = false;
 		}
-		elseif(strlen($art_desc) > 150)
+		elseif(strlen($art_desc) > 500)
 		{
-			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			echo "<span class='err'>Please summarize in under 500 characters</span>";
 			$cl = false;
 		}
 		elseif(empty($vpcode))
@@ -70,7 +73,12 @@ else
 			$cl = false;
 		}
 		else{
-			$target_dir = "../Profilepics/";
+			
+			$token = 'sadkjeawhijwajdilhasilfjaehioryweapirjpway9uprpjrpewahjrej23136513123q08192383431';
+			$token = str_shuffle($token);
+		    $token= substr($token,0,10);
+			$filecreate = mkdir("../Profilepics/Articles/$token");
+			$target_dir = "../Profilepics/Articles/$token/";
             
             $uploadOk = 1;
             $base = mysqli_real_escape_string($db,basename($_FILES['file']['name']));
@@ -105,10 +113,9 @@ elseif ($_FILES["file"]["size"] > 5000000) {
 			echo "<span class='err'>This is the articles main content.Please double click to submit.</span>";
 		}
         else
-		{
-			echo "<span class='err'></span>";
-	            move_uploaded_file($_FILES['file']['tmp_name'],$target_file);
-				$sql = "INSERT INTO articles(article_name,article_summary,article_content,article_category,article_create,article_image) VALUES('$art_name','$art_desc','$art_desc2','$art_tit',NOW(),'$clean')";
+		{  
+             	move_uploaded_file($_FILES['file']['tmp_name'],$target_file);
+				$sql = "INSERT INTO articles(article_name,article_summary,article_content,article_category,article_create,article_image,article_unique_key) VALUES('$art_name','$art_desc','$art_desc2','$art_tit',NOW(),'$clean','$token')";
 				$results = $db->query($sql);
 				echo "<script type='text/javascript'>
 			   setTimeout(function(){window.location.assign('../index.php');});	</script>";

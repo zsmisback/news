@@ -12,19 +12,29 @@
   
   <style>
   .container{background-color:grey;}
+  .passcheck {
+        float: right;
+        margin-right: 6px;
+        margin-top: -50px;
+        position: relative;
+        z-index: 2;
+        
+    }
+	#eye:hover{cursor:pointer;}
   </style>
 </head>
 <body>
 <div class="container">
 <br><br>
 <form name="log" id="logpass" method="post">
-<input type="text" class="form-control mb-4 text-center" name="user" id="username" placeholder="Enter your username">
+<input type="text" class="form-control mb-4" name="user" id="username" placeholder="Enter your username">
 <p id="error" class="text-center"></p>
 
-<input type="password" class="form-control mb-4 text-center" name="passw" id="password" placeholder="Enter your password">
-
-<input type="text" class="form-control mb-4 text-center" name="vpc" id="vpcode" placeholder="Enter the vpcode">
-<p id="error2" class="text-center"></p>
+<input type="password" class="form-control mb-4" name="passw" id="password" placeholder="Enter your password">
+<span onclick="myFunction()" id="eye" class="far fa-eye passcheck"></span>
+<input type="password" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode">
+<span onclick="myFunction2()" id="eye" class="far fa-eye passcheck"></span>
+<p id="error2"></p>
 <button type="submit" id="loginuser" name="act" value="log" class="btn btn-success btn-block">Log in</button>
 <br>
 
@@ -82,7 +92,11 @@ $(document).ready(function(){
 		
 	});
 	
-	function myFunction() {
+	
+	
+});	
+
+function myFunction() {
   var x = document.getElementById("password");
   if (x.type === "password") {
     x.type = "text";
@@ -90,8 +104,15 @@ $(document).ready(function(){
     x.type = "password";
   }
 }
-	
-});	
+
+function myFunction2() {
+  var x = document.getElementById("vpcode");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
 </script>
 </body>
 </html>

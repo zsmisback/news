@@ -10,7 +10,6 @@ include '../config.php';
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <script src="ckeditor.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -33,28 +32,29 @@ include '../config.php';
 <body>
 <?php include '../navbar3.php'; ?>
 <div class='container' id='category_back'>
-<form name='comm' method='post' id='comments'>
+<form name='art' method='post' id='articles'>
 
-<h3 id='user' class='text-center'>Delete a Category</h3>
+<h3 id='user' class='text-center'>Block/Unblock an Article</h3>
 <input type="password" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
 <span onclick="myFunction2()" id="eye" class="far fa-eye passcheck"></span>
 <p class='err' id='error'></p>
 <button type="submit" id='cbtn' class="btn btn-dark btn-block btn-lg" name='newcom' >Submit</button>
 </form>
+<br>
 <a href="../index.php" id='artcan'><button type="submit" class="btn btn-danger btn-block btn-lg">Cancel</button></a>
 <br>
 
 
 <script>
 $(document).ready(function(){
-	$('#comments').submit(function(event){
+	$('#articles').submit(function(event){
 		event.preventDefault();
 		
 		var vpcode = $('#vpcode').val();
 		var cbtn = $('#cbtn').val();
 		
 		$.ajax({
-			url:'deletecommentphp.php?id=<?php echo $_GET['id']; ?>',
+			url:'blockarticlephp.php?id=<?php echo $_GET['id']; ?>',
 			method:'POST',
 			data:{
 			      vpcode:vpcode,

@@ -37,9 +37,16 @@ $row2 = $result2->fetch_assoc();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="jquery.backstretch.min.js"></script>
   <style>
-  
-  
-  </style>
+.passcheck {
+        float: right;
+        margin-right: 6px;
+        margin-top: -50px;
+        position: relative;
+        z-index: 2;
+        
+    }
+	#eye:hover{cursor:pointer;}
+</style>
 </head>
 <body>
 <?php include '../navbar3.php'; ?>
@@ -74,7 +81,8 @@ echo "
 <textarea class='form-control' name='art_desc' rows='4' cols='155' id='adesc' placeholder='Summary'><?php echo $row2['article_summary']; ?></textarea>
 
 <br>
-<input type="text" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
+<input type="password" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
+<span onclick="myFunction2()" id="eye" class="far fa-eye passcheck"></span>
 <input type='file' name='file' id='file'/>
 </div>
 
@@ -155,6 +163,15 @@ $(document).ready(function(){
 	
 	
 });
+
+function myFunction2() {
+  var x = document.getElementById("vpcode");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
 </script>
 </body>
 </html>

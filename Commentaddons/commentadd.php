@@ -31,8 +31,16 @@ if($result->num_rows == 0)
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="jquery.backstretch.min.js"></script>
   <style>
-  
-  </style>
+.passcheck {
+        float: right;
+        margin-right: 6px;
+        margin-top: -50px;
+        position: relative;
+        z-index: 2;
+        
+    }
+	#eye:hover{cursor:pointer;}
+</style>
 </head>
 <body>
 <?php include '../navbar3.php'; ?>
@@ -66,8 +74,8 @@ echo "
 </div>
 <textarea class='form-control' name='comment_desc' rows='4' cols='155' id='cdesc' placeholder='Summary'></textarea>
 <br>
-<input type="text" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
-
+<input type="password" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
+<span onclick="myFunction2()" id="eye" class="far fa-eye passcheck"></span>
 <p class='err' id='error'></p>
 <button type="submit" id='cbtn' class="btn btn-dark btn-block btn-lg" name='newcom' >Submit</button>
 </form>
@@ -128,6 +136,15 @@ $(document).ready(function(){
 	
 	
 });
+
+function myFunction2() {
+  var x = document.getElementById("vpcode");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
 </script>
 </body>
 </html>

@@ -49,17 +49,42 @@ while($row = $result->fetch_assoc())
   else
   {
 	  echo"<a href='Articleaddons/editarticle.php?id=$row[article_id]' class='float-right'>Edit</a>
-	       <br><br>
-	       <a href='Articleaddons/deletearticle.php?id=$row[article_id]' class='float-right'>Delete</a>";
+	       <br><br>";
+		  if($row['article_block'] == 0)
+		  {
+		   echo"<a href='Articleaddons/blockarticle.php?id=$row[article_id]' class='float-right'>Block</a>
+		       <br><br>";
+		  }
+		  else
+		  {
+			  echo"<a href='Articleaddons/blockarticle.php?id=$row[article_id]' class='float-right'>Unblock</a>
+		       <br><br>";
+		  }
+	  echo"<a href='Articleaddons/deletearticle.php?id=$row[article_id]' class='float-right'>Delete</a>";
   }
 
+ if($row['article_block'] == 0)
+ {	 
 echo"
    <a href='content.php?id=$row[article_id]'>
-   <img src='Profilepics/$row[article_image]' alt = 'image' style='width:400px'>
+   <img src='Profilepics/Articles/$row[article_unique_key]/$row[article_image]' alt = 'image' style='width:400px'>
    <h2>$row[article_name]</h2>
    </a>
    ";
-  
+ }
+ else
+ {
+	 echo"
+	 
+	   
+			   
+   <a href='articles.php?id=$row[article_category]' onclick='Blockalert()'>
+   
+   <img src='Profilepics/Articles/$row[article_unique_key]/$row[article_image]' alt = 'image' style='width:400px'>
+   <h2>$row[article_name]</h2>
+   </a>
+   ";
+ } 
    
 echo"
    <h5>$row[article_summary]</h5>
@@ -79,6 +104,10 @@ echo"
 $(document).ready(function(){
   $('[data-toggle="popover"]').popover();   
 });
+
+function Blockalert(){
+	alert('This article has been blocked by an admin');
+}
 </script>
 </body>
 </html>

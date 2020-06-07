@@ -24,9 +24,9 @@ else
 		{
 			echo "<span class='err'>Please fill in the comment description </span>";
 		}
-		elseif(strlen($cdesc) > 150)
+		elseif(strlen($cdesc) > 500)
         {
-			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			echo "<span class='err'>Please summarize in under 500 characters</span>";
 			
 	    }
 		elseif(empty($vpcode))

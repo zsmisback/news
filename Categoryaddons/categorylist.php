@@ -75,7 +75,7 @@ while($row = $result->fetch_assoc())
  <tr>
 <td>$row[cat_name]</td>
  <td>$row[cat_desc]</td>
-  <td><img src='../Profilepics/$row[cat_img]' style='width:200px'></td>
+  <td><img src='../Profilepics/Category/$row[cat_unique_key]/$row[cat_img]' style='width:200px'></td>
  <td><a href='editcategory.php?id=$row[cat_id]'><button class='btn btn-primary' type='submit'>Edit</button></a></td>
   <td><a href='deletecategory.php?id=$row[cat_id]'><button class='btn btn-warning' type='submit'>Delete</button></a></td>
   </tr>

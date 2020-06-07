@@ -44,9 +44,9 @@ else
 			echo "<span class='err'>Please fill in the article summary </span>";
 			$cl = false;
 		}
-		elseif(strlen($art_desc) > 150)
+		elseif(strlen($art_desc) > 500)
 		{
-			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			echo "<span class='err'>Please summarize in under 500 characters</span>";
 			$cl = false;
 		}
 		elseif(empty($vpcode))
@@ -70,8 +70,11 @@ else
 			$cl = false;
 		}
 		else{
-			$target_dir = "../Profilepics/";
-            
+			
+			$sq = "SELECT * FROM articles WHERE article_id = $_GET[id]";
+			$result = $db->query($sq);
+			$row = $result->fetch_assoc();
+            $target_dir = "../Profilepics/Articles/$row[article_unique_key]/";
             $uploadOk = 1;
             $base = mysqli_real_escape_string($db,basename($_FILES['file']['name']));
 			$clean = clean($base);

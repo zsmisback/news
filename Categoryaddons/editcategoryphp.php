@@ -28,9 +28,9 @@ else
 	{
 		echo "<span class='err'>Please fill in the description field</span>";
 	}
-	elseif(strlen($cat_desc) > 150)
+	elseif(strlen($cat_desc) > 500)
     {
-			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			echo "<span class='err'>Please summarize in under 500 characters</span>";
 			
 	}
 	elseif(!isset($_FILES['file']['name']))
@@ -46,8 +46,10 @@ else
 		echo "<span class='err'>The vpcode is incorrect </span>";
 	}
 	else{
-			$target_dir = "../Profilepics/";
-            
+			$sq = "SELECT * FROM category WHERE cat_id = $_GET[id]";
+			$result = $db->query($sq);
+			$row = $result->fetch_assoc();
+            $target_dir = "../Profilepics/Category/$row[cat_unique_key]/";
             $uploadOk = 1;
             $base = mysqli_real_escape_string($db,basename($_FILES['file']['name']));
 			$clean = clean($base);

@@ -24,6 +24,8 @@ else
     `comment_id` int(255) AUTO_INCREMENT,
     `comment_summary` varchar(255) NOT NULL,
 	`comment_article` int(255) NOT NULL,
+	`comment_create` datetime NOT NULL,
+	`comment_by` varchar(255) NOT NULL,
      PRIMARY KEY  (`comment_id`))";
 	 
 	 
@@ -34,9 +36,9 @@ else
 		{
 			echo "<span class='err'>Please fill in the comment description </span>";
 		}
-		elseif(strlen($cdesc) > 150)
+		elseif(strlen($cdesc) > 500)
         {
-			echo "<span class='err'>Please summarize in under 150 characters</span>";
+			echo "<span class='err'>Please summarize in under 500 characters</span>";
 			
 	    }
 		elseif(empty($art_tit) || $art_tit == 'No')
