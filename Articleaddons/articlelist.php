@@ -81,7 +81,7 @@ while($row = $result->fetch_assoc())
  <td>$row[article_summary]</td>
   <td>$row[article_content]</td>
   <td>$row[cat_name]</td>
-  <td><a href='#'><button class='btn btn-warning' type='submit'>Edit</button></a></td>
+  <td><a href='editarticle.php?id=$row[article_id]'><button class='btn btn-warning' type='submit'>Edit</button></a></td>
   <td><a href='deletearticle.php?id=$row[article_id]'><button class='btn btn-danger' type='submit'>Delete</button></a></td>
   </tr>
   ";
