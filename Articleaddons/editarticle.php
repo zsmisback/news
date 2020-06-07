@@ -47,7 +47,7 @@ $row2 = $result2->fetch_assoc();
 <form name='art' method='post' id='article'>
 <div id='firstart'>
 <h3 id='user' class='text-center'>Edit an Article</h3>
-
+<h4 id='user' class='text-center'>Please double click to submit the form</h4>
 <input type='text' id = 'aname' name = 'art_name' class='form-control mb-4' placeholder = 'Enter the name of the article' value='<?php echo $row2['article_name']; ?>'>
 <div class='form-group'>
 Select a category:<select class='form-control' id='artsel' name='artselect'>
