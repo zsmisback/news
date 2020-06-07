@@ -53,9 +53,10 @@ else
             $uploadOk = 1;
             $base = mysqli_real_escape_string($db,basename($_FILES['file']['name']));
 			$clean = clean($base);
-            $target_file = $target_dir . $clean;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            $file = $_FILES['file']['name'];
+            $imageFileType = strtolower(pathinfo($clean,PATHINFO_EXTENSION));
+            $target_file = $target_dir . "Profile".".$imageFileType";
+            $target_name = "Profile".".$imageFileType";
+			$file = $_FILES['file']['name'];
             $check = getimagesize($_FILES["file"]["tmp_name"]);
   
   
@@ -75,7 +76,7 @@ elseif ($_FILES["file"]["size"] > 5000000) {
   {
 	            echo "<span class='err'></span>";
 	            move_uploaded_file($_FILES['file']['tmp_name'],$target_file);
-				$sql = "UPDATE category SET cat_name = '$cat_name',cat_desc = '$cat_desc',cat_img = '$clean',cat_create = NOW() WHERE cat_id = $_GET[id]";
+				$sql = "UPDATE category SET cat_name = '$cat_name',cat_desc = '$cat_desc',cat_img = '$target_name',cat_create = NOW() WHERE cat_id = $_GET[id]";
 				$results = $db->query($sql);
 				echo "<script type='text/javascript'>
 			   setTimeout(function(){window.location.assign('../index.php');});	</script>";

@@ -50,7 +50,9 @@ $row = $result->fetch_assoc();
 <input type="password" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
 <span onclick="myFunction2()" id="eye" class="far fa-eye passcheck"></span>
 <input type='file' name='file' id='file'/>
-
+<br><br>
+Current Image:
+<img src="../Profilepics/Category/<?php echo $row['cat_unique_key']; ?>/<?php echo $row['cat_img']; ?>" style="width:200px">
 <p id='caterr' name='caerr'></p>
 <button type="submit" id='cbtn' class="btn btn-dark btn-block btn-lg" name='newcat' >Submit</button>
 </form>

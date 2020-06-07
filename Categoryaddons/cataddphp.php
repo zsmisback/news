@@ -18,7 +18,7 @@ else
 	$cat_desc = mysqli_real_escape_string($db,$_POST['cat_desc']);
 	$vpcode = mysqli_real_escape_string($db,$_POST['vpc']);
 	
-	$queryCreateUsersTable = "CREATE TABLE IF NOT EXISTS `category` (
+	/*$queryCreateUsersTable = "CREATE TABLE IF NOT EXISTS `category` (
     `cat_id` int(255) AUTO_INCREMENT,
     `cat_name` varchar(255) NOT NULL,
     `cat_desc` varchar(255) NOT NULL,
@@ -30,7 +30,7 @@ else
 	 
 
     $ress = $db->multi_query($queryCreateUsersTable);
-	
+	*/
 	$sql = "SELECT * FROM category WHERE cat_name = '$cat_name'";
 	$result = $db->query($sql);
 	
@@ -73,9 +73,10 @@ else
             $uploadOk = 1;
             $base = mysqli_real_escape_string($db,basename($_FILES['file']['name']));
 			$clean = clean($base);
-            $target_file = $target_dir . $clean;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            $file = $_FILES['file']['name'];
+			$imageFileType = strtolower(pathinfo($clean,PATHINFO_EXTENSION));
+            $target_file = $target_dir . "Profile".".$imageFileType";
+            $target_name = "Profile".".$imageFileType";
+			$file = $_FILES['file']['name'];
             $check = getimagesize($_FILES["file"]["tmp_name"]);
   
   
@@ -95,10 +96,11 @@ elseif ($_FILES["file"]["size"] > 5000000) {
   {
 	            echo "<span class='err'></span>";
 	            move_uploaded_file($_FILES['file']['tmp_name'],$target_file);
-				$sql = "INSERT INTO category(cat_name,cat_desc,cat_img,cat_unique_key,cat_create) VALUES('$cat_name','$cat_desc','$clean','$token',NOW())";
+				$sql = "INSERT INTO category(cat_name,cat_desc,cat_img,cat_unique_key,cat_create) VALUES('$cat_name','$cat_desc','$target_name','$token',NOW())";
 				$results = $db->query($sql);
 				echo "<script type='text/javascript'>
 			   setTimeout(function(){window.location.assign('../index.php');});	</script>";
+				
 				
   }
   

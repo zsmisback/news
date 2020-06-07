@@ -84,6 +84,9 @@ echo "
 <input type="password" class="form-control mb-4" name="vpc" id="vpcode" placeholder="Enter the vpcode"/>
 <span onclick="myFunction2()" id="eye" class="far fa-eye passcheck"></span>
 <input type='file' name='file' id='file'/>
+<br><br>
+Current Image:
+<img src="../Profilepics/Articles/<?php echo $row2['article_unique_key']; ?>/<?php echo $row2['article_image']; ?>" style="width:200px">
 </div>
 
 <h3 id='user' class='text-center'>The Articles Content</h3>

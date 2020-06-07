@@ -83,9 +83,10 @@ else
             $uploadOk = 1;
             $base = mysqli_real_escape_string($db,basename($_FILES['file']['name']));
 			$clean = clean($base);
-            $target_file = $target_dir . $clean;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            $file = $_FILES['file']['name'];
+            $imageFileType = strtolower(pathinfo($clean,PATHINFO_EXTENSION));
+            $target_file = $target_dir . "Profile".".$imageFileType";
+            $target_name = "Profile".".$imageFileType";
+			$file = $_FILES['file']['name'];
             $check = getimagesize($_FILES["file"]["tmp_name"]);
   
   
@@ -115,7 +116,7 @@ elseif ($_FILES["file"]["size"] > 5000000) {
         else
 		{  
              	move_uploaded_file($_FILES['file']['tmp_name'],$target_file);
-				$sql = "INSERT INTO articles(article_name,article_summary,article_content,article_category,article_create,article_image,article_unique_key) VALUES('$art_name','$art_desc','$art_desc2','$art_tit',NOW(),'$clean','$token')";
+				$sql = "INSERT INTO articles(article_name,article_summary,article_content,article_category,article_create,article_image,article_unique_key) VALUES('$art_name','$art_desc','$art_desc2','$art_tit',NOW(),'$target_name','$token')";
 				$results = $db->query($sql);
 				echo "<script type='text/javascript'>
 			   setTimeout(function(){window.location.assign('../index.php');});	</script>";
