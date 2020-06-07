@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2020 at 08:01 AM
+-- Generation Time: Jun 07, 2020 at 12:54 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -30,18 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comments` (
   `comment_id` int(255) NOT NULL,
-  `comment_summary` varchar(255) NOT NULL,
+  `comment_summary` varchar(550) NOT NULL,
   `comment_article` int(255) NOT NULL,
   `comment_create` datetime NOT NULL,
   `comment_by` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`comment_id`, `comment_summary`, `comment_article`, `comment_create`, `comment_by`) VALUES
-(18, 'Told me', 25, '2020-06-07 01:45:44', 'resheil');
 
 --
 -- Indexes for dumped tables

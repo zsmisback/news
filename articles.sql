@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2020 at 08:01 AM
+-- Generation Time: Jun 07, 2020 at 12:54 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -31,23 +31,22 @@ SET time_zone = "+00:00";
 CREATE TABLE `articles` (
   `article_id` int(255) NOT NULL,
   `article_name` varchar(255) NOT NULL,
-  `article_summary` varchar(255) NOT NULL,
+  `article_summary` varchar(550) NOT NULL,
   `article_content` blob NOT NULL,
   `article_category` int(255) NOT NULL,
   `article_create` datetime NOT NULL,
-  `article_image` varchar(255) NOT NULL
+  `article_image` varchar(255) NOT NULL,
+  `article_unique_key` varchar(10) NOT NULL,
+  `article_block` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`article_id`, `article_name`, `article_summary`, `article_content`, `article_category`, `article_create`, `article_image`) VALUES
-(24, 'An Article on football', 'Something something', 0x3c703e48656c6c6f3c2f703e0a, 6, '2020-06-07 01:44:58', 'images-1.jpg'),
-(25, 'An Article on Cricket234', 'WORK!!!!2342', 0x3c703e733c2f703e0a, 9, '2020-06-07 11:30:02', 'images-1.jpg'),
-(26, 'Another article on football', 'Yea dude that was so rad!!!!', 0x3c703e5761646475703c2f703e0a0a3c703e266e6273703b3c2f703e0a0a3c703e266e6273703b3c2f703e0a, 6, '2020-06-07 01:46:40', 'download.jpg'),
-(27, 'Another article on cricket', 'yup', 0x3c703e5365653c2f703e0a, 9, '2020-06-07 01:47:38', 'images-1.jpg'),
-(28, 'An Article on football2', 'An article', 0x3c703e4865793c2f703e0a, 6, '2020-06-07 10:13:46', 'images-1.jpg');
+INSERT INTO `articles` (`article_id`, `article_name`, `article_summary`, `article_content`, `article_category`, `article_create`, `article_image`, `article_unique_key`, `article_block`) VALUES
+(31, 'An Article on football', 'Cool', 0x3c703e536f6d657468696e672061626f757420666f6f7462616c6c3c2f703e0a, 29, '2020-06-07 14:22:52', 'download.jpg', '3ojjyaier9', 0),
+(32, 'An Article on Cricket', 'Thats cool too', 0x3c703e5965613c2f703e0a, 30, '2020-06-07 14:23:48', 'images-1.jpg', 'wr3a0f9aae', 0);
 
 --
 -- Indexes for dumped tables
@@ -68,7 +67,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `article_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `article_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2020 at 08:01 AM
+-- Generation Time: Jun 07, 2020 at 12:54 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -31,8 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `category` (
   `cat_id` int(255) NOT NULL,
   `cat_name` varchar(255) NOT NULL,
-  `cat_desc` varchar(255) NOT NULL,
+  `cat_desc` varchar(550) NOT NULL,
   `cat_img` varchar(255) NOT NULL,
+  `cat_unique_key` varchar(10) NOT NULL,
   `cat_create` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,9 +41,9 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`cat_id`, `cat_name`, `cat_desc`, `cat_img`, `cat_create`) VALUES
-(6, 'Football', 'News related to Football', 'euro-football-1080p-HD-Wallpaper.jpg', '2020-06-06 23:46:32'),
-(9, 'Cricket', 'Something about cricket', 'Balls-bat-free-wallpapers-hd-cricket.jpg', '2020-06-06 21:40:49');
+INSERT INTO `category` (`cat_id`, `cat_name`, `cat_desc`, `cat_img`, `cat_unique_key`, `cat_create`) VALUES
+(29, 'Football', 'News related to football', 'euro-football-1080p-HD-Wallpaper.jpg', '318wk0ieuj', '2020-06-07 14:21:17'),
+(30, 'Cricket', 'News related to cricket', 'Balls-bat-free-wallpapers-hd-cricket.jpg', 'a3i8ujp1wh', '2020-06-07 14:21:49');
 
 --
 -- Indexes for dumped tables
@@ -62,7 +63,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cat_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
