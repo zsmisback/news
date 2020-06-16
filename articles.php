@@ -138,5 +138,5 @@ function Blockalert(){
 	alert('This article has been blocked by an admin');
 }
 </script>
-</body>
+<?php include 'footer.php'; ?>
 </html>
