@@ -22,7 +22,7 @@ while($row = $result->fetch_assoc())
 
 echo"
   <div class='col-md-6 mb-4'>
-  <a href='articles.php?id=$row[cat_id]'>
+  <a href='articles.php?id=$row[cat_id]&page=1'>
   <div class='card' style='width:400px'>
     <img class='card-img-top' src='Profilepics/Category/$row[cat_unique_key]/$row[cat_img]' alt='Card image' style='width:100%'>
     <div class='card-body'>

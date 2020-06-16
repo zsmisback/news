@@ -19,7 +19,10 @@ if(!isset($_GET['id']))
   
 <?php 
 
-$sql = "SELECT * FROM articles WHERE article_category = $_GET[id]";
+$limit = 12;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+$sql = "SELECT * FROM articles WHERE article_category = $_GET[id] LIMIT $start,$limit";
 $result = $db->query($sql);
 
 echo"<h6><a href='index.php' style='text-decoration:underline'>Home</a></h6>";
@@ -70,7 +73,7 @@ echo"
 	 
 	   
 			   
-   <a href='articles.php?id=$row[article_category]' onclick='Blockalert()'>
+   <a href='articles.php?id=$row[article_category]&page=1' onclick='Blockalert()'>
    <div class='row'>
    <div class='col-md-6'>
    <img src='Profilepics/Articles/$row[article_unique_key]/$row[article_image]' alt = 'image' style='width:400px;height:200px;'>
@@ -94,6 +97,35 @@ echo"
 ?>  
   <br>
   
+  <?php
+  
+  $page_query = "SELECT * FROM articles WHERE article_category = $_GET[id]";
+                $page_result = $db->query($page_query);
+                $total_records = mysqli_num_rows($page_result);
+                $total_pages = ceil($total_records/$limit);
+                $prev = $page - 1;
+                $next = $page + 1;
+				$start = 1;
+  
+ if($_GET['page'] == 1)
+ {
+	 echo "<ul class='pagination'>";
+ }
+ else
+ {
+echo" 
+  <ul class='pagination'>
+  <li class='page-item'><a class='page-link' href='articles.php?id=$_GET[id]&page=$prev'>Previous</a></li>";
+ }
+  for($i=1;$i<=$total_pages;$i++) : 
+  echo"
+  <li class='page-item'><a class='page-link' href='articles.php?id=$_GET[id]&page=$i'>$i</a></li>";
+ endfor;
+ echo" <li class='page-item'><a class='page-link' href='articles.php?id=$_GET[id]&page=$next'>Next</a></li>
+</ul>
+  ";
+ 
+ ?>
  
   
 </div>

@@ -27,6 +27,12 @@ if($result->num_rows == 0)
 }
 while($row = $result->fetch_assoc())
 {
+	if($row['article_block'] == 1)
+	{
+		header("Location:index.php");
+	}
+	else
+	{
 echo"<h6><a href='index.php' style='text-decoration:underline'>Home</a> > <a href='articles.php?id=$row[article_category]' style='text-decoration:underline'>Articles</a> </h6>";
 echo"
   <h2 class='text-center'>$row[article_name]</h2>
@@ -41,8 +47,16 @@ echo"
   $res=$db->query($sql2);
   while($row3=$res->fetch_assoc())
   {
+	  if($row3['article_block'] == 0)
+    {	
+      echo"
+      <a href='content.php?id=$row3[article_id]'>";
+    }
+	else
+	{
+		echo"<a href='content.php?id=$_GET[id]' onclick='Blockalert()'>";
+	}
   echo"
-  <a href='content.php?id=$row3[article_id]'>
   <div class='row'>
   <div class='col-md-4'>
   <img src='Profilepics/Articles/$row3[article_unique_key]/$row3[article_image]' alt = 'image' style='width:90px;height:70px;'>
@@ -104,6 +118,7 @@ echo"
 	 
   }
   
+ }
   
 }
 
@@ -168,6 +183,10 @@ $(document).ready(function(){
   
   
 });
+
+function Blockalert(){
+	alert('This article has been blocked by an admin');
+}
 </script>
 </body>
 </html>

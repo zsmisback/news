@@ -66,6 +66,7 @@
   <div class='dropdown-menu'>
       <a class='dropdown-item' href='Articleaddons/articleadd.php'>Add articles</a>
       <a class='dropdown-item' href='Articleaddons/articlelist.php'>List articles</a>
+	  <a class='dropdown-item' href='listarticles.php?page=1'>List articles(User)</a>
       
     </div>
  </div>

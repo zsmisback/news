@@ -19,7 +19,7 @@ if(!isset($_GET['page']))
   
 <?php 
 
-$limit = 2;
+$limit = 12;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 $sql = "SELECT * FROM articles LIMIT $start,$limit";
@@ -73,7 +73,7 @@ echo"
 	 
 	   
 			   
-   <a href='articles.php?id=$row[article_category]' onclick='Blockalert()'>
+   <a href='listarticles.php?page=1' onclick='Blockalert()'>
    <div class='row'>
    <div class='col-md-6'>
    <img src='Profilepics/Articles/$row[article_unique_key]/$row[article_image]' alt = 'image' style='width:400px;height:200px;'>
