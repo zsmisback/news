@@ -1,7 +1,7 @@
  <!-- grids block 5 -->
  <section class="w3l-footer-29-main" id="footer">
   <div class="footer-29">
-    <div class="grids-forms-1 pb-5">
+ <!--   <div class="grids-forms-1 pb-5">
 <div class="container">
   <div class="grids-forms">
       <div class="main-midd">
@@ -16,23 +16,23 @@
       </div>
     </div>
   </div>
-  </div>
+  </div>-->
       <div class="container pt-5">
         
           <div class="d-grid grid-col-4 footer-top-29">
               <div class="footer-list-29 footer-1">
                   <h6 class="footer-title-29">About Us</h6>
                   <ul>
-                     <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
+                     <p>Welcome to Champions.in!!!We specialize in the latest and greatest news/topics related to all things sports and bring our A game when it comes to serving you the best in the industry.</p>
                   </ul>
-                  <div class="main-social-footer-29">
+                 <!-- <div class="main-social-footer-29">
                     <h6 class="footer-title-29">Social Links</h6>
                       <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
                       <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
                       <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
                       <a href="#google-plus" class="google-plus"><span class="fa fa-google-plus"></span></a>
                       <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
-                  </div>
+                  </div> -->
               </div>
               <div class="footer-list-29 footer-2">
                   <ul>
@@ -60,7 +60,7 @@
 					  while($row_footer2 = $result_footer2->fetch_assoc())
 					  {
 					  echo"
-                      <a href='content.php?id=$row_footer2[article_id]'><p>$row_footer2[article_name]</p></a>
+                      <a href='content.php?id=$row_footer2[article_id]'><img src='Profilepics/Articles/$row_footer2[article_unique_key]/$row_footer2[article_image]' class='img-responsive' alt=''><p>$row_footer2[article_name]</p></a>
                       ";
 					  }
                      ?>
@@ -70,12 +70,14 @@
                   <ul>
                       <h6 class="footer-title-29">Quick Links</h6>
                       <li><a href="index.php">Home</a></li>
+					  <li><a href="listarticles.php?page=1">List articles</a></li>
+					  <li><a href="login.php">Login</a></li>
                       
                   </ul>
               </div>
           </div>
           <div class="bottom-copies text-center">
-              <p class="copy-footer-29">© 2020 Estate Agent. All rights reserved | Designed by <a href="https://w3layouts.com">W3layouts</a></p>
+              <p class="copy-footer-29">© All rights reserved</p>
                
           </div>
       </div>
@@ -107,7 +109,7 @@
                  <!-- /move top -->
 </section>
 <!-- // grids block 5 -->
-<script src="<?php echo C_ASSET_PATH; ?>assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- //footer-28 block -->

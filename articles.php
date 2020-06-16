@@ -125,6 +125,7 @@ echo"
  endfor;
  echo" <li class='page-item'><a class='page-link' href='articles.php?id=$_GET[id]&page=$next'>Next</a></li>
 </ul>
+<br>
   ";
  
  ?>

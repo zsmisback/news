@@ -123,6 +123,7 @@ echo"
  endfor;
  echo" <li class='page-item'><a class='page-link' href='listarticles.php?page=$next'>Next</a></li>
 </ul>
+<br>
   ";
  
  ?>
