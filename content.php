@@ -39,6 +39,54 @@ echo"
   <div class='row'>
   <div class='col-md-9'>
    $row[article_content]
+   <h4>Comments:</h4>";
+   $sql4 = "SELECT * FROM comments WHERE comment_article = $_GET[id] ORDER BY comment_create DESC";
+  $result4=$db->query($sql4);
+  
+  echo " <form name='com' method='post' id='comments'>
+
+                      <h3 id='user'>Reply</h3>
+                      <textarea class='form-control' name='com_desc' rows='4' cols='155' id='cdesc' placeholder='Summary'></textarea>
+					  <br>
+					  <p class='err' id='error'></p>
+					  <button type='submit' id='cbtn' class='btn btn-dark btn-lg float-right' name='newcom' >Submit</button>
+					  <br>";
+					  
+  if($result4->num_rows == 0)
+  {
+	  echo "No comments";
+  }
+  else
+  {
+	  while($row4 = $result4->fetch_assoc())
+	  {
+		  echo "<h6>Posted on: $row4[comment_create]</h6>";
+		   
+		       if(empty($row4['comment_by']))
+			   {
+				   echo "<h6>By: Anonymous user</h6>";
+			   }
+			   else
+			   {
+		        echo "<h6>By: $row4[comment_by]</h6>";
+		       }
+			   if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
+           {
+	        echo"";
+           }
+            else
+           {
+	        echo"<a href='Commentaddons/editcomment.php?id=$row4[comment_id]' class='float-right'>Edit</a>
+			     <br><br>
+			     <a href='Commentaddons/deletecomment.php?id=$row4[comment_id]' class='float-right'>Delete</a>";
+           }
+			   echo "<p>$row4[comment_summary]</p><hr>";
+		  
+	  }
+	 
+  }
+  
+ echo"  
   </div>
   <div class='col-md-3'>
   <h5 class='text-center'>More articles</h5>
@@ -76,59 +124,15 @@ echo"
   }
  echo"</div>
    </div>  
-  <h4>Comments:</h4>
-   
   
-  ";
+    ";
   
-  $sql = "SELECT * FROM comments WHERE comment_article = $_GET[id]";
-  $result=$db->query($sql);
-  
-  if($result->num_rows == 0)
-  {
-	  echo "No comments";
-  }
-  else
-  {
-	  while($row = $result->fetch_assoc())
-	  {
-		  echo "<h6>Posted on: $row[comment_create]</h6>";
-		   
-		       if(empty($row['comment_by']))
-			   {
-				   echo "<h6>By: Anonymous user</h6>";
-			   }
-			   else
-			   {
-		        echo "<h6>By: $row[comment_by]</h6>";
-		       }
-			   if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true)
-           {
-	        echo"";
-           }
-            else
-           {
-	        echo"<a href='Commentaddons/editcomment.php?id=$row[comment_id]' class='float-right'>Edit</a>
-			     <br><br>
-			     <a href='Commentaddons/deletecomment.php?id=$row[comment_id]' class='float-right'>Delete</a>";
-           }
-			   echo "<p>$row[comment_summary]</p><hr>";
-		  
-	  }
-	 
-  }
   
  }
   
 }
 
-echo " <form name='com' method='post' id='comments'>
 
-                      <h3 id='user'>Reply</h3>
-                      <textarea class='form-control' name='com_desc' rows='4' cols='155' id='cdesc' placeholder='Summary'></textarea>
-					  <br>
-					  <p class='err' id='error'></p>
-					  <button type='submit' id='cbtn' class='btn btn-dark btn-lg float-right' name='newcom' >Submit</button>";
  
 ?>  
   <br>
