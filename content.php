@@ -50,6 +50,7 @@ echo"
 					  <br>
 					  <p class='err' id='error'></p>
 					  <button type='submit' id='cbtn' class='btn btn-dark btn-lg float-right' name='newcom' >Submit</button>
+					  </form>
 					  <br>";
 					  
   if($result4->num_rows == 0)
