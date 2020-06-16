@@ -37,10 +37,10 @@ echo"<h6><a href='index.php' style='text-decoration:underline'>Home</a> > <a hre
 echo"
   <h2 class='text-center'>$row[article_name]</h2>
   <div class='row'>
-  <div class='col-md-10'>
+  <div class='col-md-9'>
    $row[article_content]
   </div>
-  <div class='col-md-2'>
+  <div class='col-md-3'>
   <h5 class='text-center'>More articles</h5>
   <br>";
   $sql2="SELECT * FROM articles";
@@ -58,11 +58,11 @@ echo"
 	}
   echo"
   <div class='row'>
-  <div class='col-md-4'>
-  <img src='Profilepics/Articles/$row3[article_unique_key]/$row3[article_image]' alt = 'image' style='width:90px;height:70px;'>
+  <div class='col-xl-6'>
+  <img src='Profilepics/Articles/$row3[article_unique_key]/$row3[article_image]' alt = 'image' style='width:168px;height:100px;'>
    </div>
-   <div class='col-md-8'>
-   <b>$row3[article_name]</b>
+   <div class='col-xl-6'>
+   <b >$row3[article_name]</b>
    
    <p>$row3[article_summary]</p>
    

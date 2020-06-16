@@ -13,7 +13,14 @@ session_start();
 	{
 		
 		$cdesc = mysqli_real_escape_string($db,$_POST['cdesc']);
+		if(!isset($_SESSION['ad_name']))
+		{
+			
+		}
+		else
+		{
 		$user = $_SESSION['ad_name'];
+		}
 	 
 	 if(empty($cdesc))
 		{
