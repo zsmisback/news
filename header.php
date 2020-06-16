@@ -39,7 +39,7 @@
 		  <div class='dropdown'>
             <a class='nav-link dropdown-toggle' style='color:white;' data-toggle='dropdown' href='#'>Articles</a>
 			<div class='dropdown-menu'>
-               <a class='dropdown-item' href='content.php?id=33'>View articles</a>
+               <a class='dropdown-item' href='content.php?id=1'>View articles</a>
                 <a class='dropdown-item' href='listarticles.php?page=1'>List articles</a>
               </div>
 			  </div>
