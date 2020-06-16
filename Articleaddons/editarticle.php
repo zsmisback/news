@@ -51,6 +51,7 @@ $row2 = $result2->fetch_assoc();
 <body>
 <?php include '../navbar3.php'; ?>
 <div class='container' id='category_back' enctype="multipart/form-data">
+<h4>Please double click on the "Submit" button in order to submit your form</h4>
 <form name='art' method='post' id='article'>
 <div id='firstart'>
 <h3 id='user' class='text-center'>Edit an Article</h3>

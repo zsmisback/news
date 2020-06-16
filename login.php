@@ -1,3 +1,10 @@
+<?php
+
+include 'Loginaddons/loginphp.php';
+	
+
+?>
+
 <html>
 <head>
 <meta charset="utf-8">
