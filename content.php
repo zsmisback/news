@@ -7,25 +7,7 @@ include 'config.php';
 
 ?>
 
-<html>
-<head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-<style>
-h1{text-align:center;}
-	a{color:black;}
-	a:hover{text-decoration:none;}
-</style>
-</head>
-<body>
-<h1>News</h1>
-<?php include 'navbar2.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class='container-fluid'> 
   
@@ -48,8 +30,39 @@ while($row = $result->fetch_assoc())
 echo"<h6><a href='index.php' style='text-decoration:underline'>Home</a> > <a href='articles.php?id=$row[article_category]' style='text-decoration:underline'>Articles</a> </h6>";
 echo"
   <h2 class='text-center'>$row[article_name]</h2>
+  <div class='row'>
+  <div class='col-md-10'>
    $row[article_content]
-   <h4>Comments:</h4>
+  </div>
+  <div class='col-md-2'>
+  <h5 class='text-center'>More articles</h5>
+  <br>";
+  $sql2="SELECT * FROM articles";
+  $res=$db->query($sql2);
+  while($row3=$res->fetch_assoc())
+  {
+  echo"
+  <a href='content.php?id=$row3[article_id]'>
+  <div class='row'>
+  <div class='col-md-4'>
+  <img src='Profilepics/Articles/$row3[article_unique_key]/$row3[article_image]' alt = 'image' style='width:90px;height:70px;'>
+   </div>
+   <div class='col-md-8'>
+   <b>$row3[article_name]</b>
+   
+   <p>$row3[article_summary]</p>
+   
+   <p>$row3[article_create]</p>
+   </div>
+   </div>
+   </a>
+   <hr>
+   <br>
+  ";
+  }
+ echo"</div>
+   </div>  
+  <h4>Comments:</h4>
    
   
   ";

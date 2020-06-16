@@ -8,11 +8,34 @@
  </ul>
  <?php
  if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
- echo "<ul class='navbar-nav'>
- <li class='nav-item'>
-  <a class='nav-link' href='login.php'>Login&nbsp<span class='fas fa-lock-open'></span></a>
- </li>
+ echo "
 
+<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navi'>
+<span class='navbar-toggler-icon'></span>
+</button>
+
+<div class='collapse navbar-collapse' id='navi'>
+ <ul class='navbar-nav mr-auto'>
+ <li class='nav-item'>
+ <div class='dropdown'>
+  <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#'>Articles</a>
+  <div class='dropdown-menu'>
+      <a class='dropdown-item' href='content.php?id=33'>View articles</a>
+      <a class='dropdown-item' href='listarticles.php?page=1'>List articles</a>
+      
+    </div>
+ </div>
+ </li>
+ 
+
+ 
+ </ul>
+ <ul class='navbar-nav'>
+ <li class='nav-item'>
+ <a class='nav-link' href='login.php'>Login&nbsp<span class='fas fa-lock-open'></span></a>
+ </li>
+ 
+ 
  </ul>
  </div>";
  }

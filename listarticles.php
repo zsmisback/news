@@ -5,7 +5,7 @@ session_start();
 
 include 'config.php';
 
-if(!isset($_GET['id']))
+if(!isset($_GET['page']))
 {
 	header("Location:index.php");
 }
@@ -19,7 +19,10 @@ if(!isset($_GET['id']))
   
 <?php 
 
-$sql = "SELECT * FROM articles WHERE article_category = $_GET[id]";
+$limit = 2;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+$sql = "SELECT * FROM articles LIMIT $start,$limit";
 $result = $db->query($sql);
 
 echo"<h6><a href='index.php' style='text-decoration:underline'>Home</a></h6>";
@@ -94,12 +97,42 @@ echo"
 ?>  
   <br>
   
+  <?php
+  
+  $page_query = "SELECT * FROM articles";
+                $page_result = $db->query($page_query);
+                $total_records = mysqli_num_rows($page_result);
+                $total_pages = ceil($total_records/$limit);
+                $prev = $page - 1;
+                $next = $page + 1;
+				$start = 1;
+  
+ if($_GET['page'] == 1)
+ {
+	 echo "<ul class='pagination'>";
+ }
+ else
+ {
+echo" 
+  <ul class='pagination'>
+  <li class='page-item'><a class='page-link' href='listarticles.php?page=$prev'>Previous</a></li>";
+ }
+  for($i=1;$i<=$total_pages;$i++) : 
+  echo"
+  <li class='page-item'><a class='page-link' href='listarticles.php?page=$i'>$i</a></li>";
+ endfor;
+ echo" <li class='page-item'><a class='page-link' href='listarticles.php?page=$next'>Next</a></li>
+</ul>
+  ";
  
+ ?>
   
 </div>
 <script>
 $(document).ready(function(){
-  $('[data-toggle="popover"]').popover();   
+  $('[data-toggle="popover"]').popover();  
+
+  
 });
 
 function Blockalert(){
